@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create/ Add New Pony</title>
+
+</head>
+<body>
+
+    <h3>Welcome, {{ user.first_name }}!</h3>
+
+    <div>
+        <a class="btn btn-success" href="/dashboard">Dashboard</a>
+        <p></p>
+        <a class="btn btn-danger" href="/logout">Logout</a>
+    </div>
+
+    <h1>Add Pony Information</h1>
+
+    <form action="/create/pony" method="post">
+
+        <div>
+            <label for="name" class="form-label">Name:</label><br>
+            <input type="text" name="name" class="form-control"></input>
+            <p></p>
+            <label for="location_made" class="form-label">Location:</label><br>
+            <input type="text" name="location_made" class="form-control"></input>
+            <p></p>
+            <label for="comment" class="form-label">Comment(s):</label><br>
+            <input type="text" name="comment" class="form-control"></input>
+            <p></p>
+        </div>
+        
+        <div>
+            <p>Choose Your List:</p>
+            <input type="radio" id="opyion1" name="pony_list" value="Collection">
+            <label class="fmt" for="pony_list">My Collection</label>
+            <input type="radio" id="option2" name="pony_list" value="Wishlist">
+            <label class="fmt" for="pony_list">My Wishlist</label>
+        </div>
+
+        <p><input type="submit" value="Submit" class="button"></p>
+        <!-- <p><input type="submit" value="Submit" class="button"> <input type="reset" value="Reset" class="button"></p> -->
+    
+        <br>
+            <!-- <input type="submit" name="" value="Update Collection" class="btn btn-warning" title="" formaction="/new/my_collection.html">
+            <input type="submit" name="" value="Update Wishlist" class="btn btn-warning" title="" formaction="/new/wishlist.html"> -->
+
+            <!-- <input type="submit" name="" class="btn action_bg btn-sm loadGif" value="My Collection" title="" a href="my_collection.html"> 
+            <input type="submit" name="" class="btn action_bg btn-sm loadGif" value="My Wishlist" title="" a href="/wishlist.html">  -->
+
+            <!-- <script>
+                // Get all the element references you'll need just once
+                let answer = document.querySelector("[name='pony_list']");
+                let submit = document.querySelector("input[type='button']");
+                
+                // Configue event handlers in JavaScript, not with HTML attributes
+                submit.addEventListener("click", redirect);
+                
+                function redirect() {
+                if(answer.value == "Collection"){
+                    location.href = "/my_collection.html";
+                }else {
+                    location.href = "/wishlist.html";
+                }
+                }
+            </script> -->
+
+
+        {% with messages = get_flashed_messages(category_filter=['pony']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p> {{ message }} </p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </form>
+    
+</body>
+</html>

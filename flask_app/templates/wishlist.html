@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+
+</head>
+<body>
+
+    <h3 class="text-center">Welcome, {{ user.first_name }}!</h3>
+
+    <a class="btn btn-success" href="/pony">RESEARCH </a>
+
+    <p></p>
+
+    <a class="btn btn-success" href="/my_collection">My Collection</a>
+
+    <p></p>
+
+    <a class="btn btn-success" href="/dashboard">Dashboard</a>
+
+    <p></p>
+
+    <a class="btn btn-danger" href="/logout">Logout</a>
+
+    <p></p>
+
+    <div class="d-flex justify-content-around flex-wrap">
+        <div class="col-6">
+
+            <h1>Manage My Wishlist</h1>
+
+            <table class="table table-warning">
+                <thead>
+                    <tr>
+                        <th>Pony Name</th>
+                        <th>Location Made</th>
+                        <th>Comment(s)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pony in user.ponys %}
+                        <tr>
+                            <td>{{ pony.name }}</td>
+                            <td>{{ pony.location_made }}</td>
+                            <td>{{ pony.comment }}</td>
+
+                            <td>|
+                                <a class="btn btn-success" href="/edit/pony/{{ pony.id }}">Edit</a>|
+                                <a class="btn btn-success" href="/new/pony">Add A Pony</a> |
+                                <a class="btn btn-success" href="/delete/pony/{{ pony.id }}">Delete</a>|
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+
+
+
+    </div> 
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+</head>
+<body>
+
+    <form action="/register" method="post">
+
+        <div>
+            <h1>Register</h1>
+            <label for="first_name" class="form-label">First Name:</label><br>
+            <input type="text" class="form-control" name="first_name" placeholder="">
+            <p></p>
+            <label for="last_name" class="form-label">Last Name:</label><br>
+            <input type="text" class="form-control" name="last_name" placeholder="">
+            <p></p>
+            <label for="email" class="form-label">Email:</label><br>
+            <input type="text" class="form-control" name="email" placeholder="">
+            <p></p>
+            <label for="password" class="form-label">Password:</label><br>
+            <input type="password" class="form-control" name="password" placeholder="">
+            <p></p>
+            <label for="confirm" class="form-label">Confirm Password:</label><br>
+            <input type="password" class="form-control" name="confirm" placeholder="">
+            <p></p>
+            <input type="submit" value="Register" class="btn btn-warning">
+        </div>
+
+        {% with messages = get_flashed_messages(category_filter=['register']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p> {{ message }} </p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </form>
+
+    <form action="/login" method="post">
+
+        <div>
+            <h1>Login</h1>
+            <label for="email" class="form-label">Email:</label><br>
+            <input type="text" class="form-control" name="email" placeholder="">
+            <p></p>
+            <label for="password" class="form-label">Password:</label><br>
+            <input type="password" class="form-control" name="password" placeholder="">
+            <p></p>
+            <input type="submit" value="Login" class="btn btn-warning">
+        </div>
+
+        {% with messages = get_flashed_messages(category_filter=['login']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p> {{ message }} </p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </form>
+
+</body>
+</html>

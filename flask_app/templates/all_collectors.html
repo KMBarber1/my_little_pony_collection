@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard/All Collectors</title>
+</head>
+
+<body>
+
+    <h3>Welcome, {{ user.first_name }}!</h3>
+
+    <div>
+        <a class="btn btn-success" href="/pony">RESEARCH </a>
+        <p></p>
+        <a class="btn btn-success" href="/new/pony">Add A Pony</a> 
+        <p></p>
+        <a class="btn btn-danger" href="/logout">Logout</a>
+    </div>
+
+    <h1>My Little Pony Collection</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Collector</th>
+                
+                <th>Actions</th>
+            
+            </tr>
+        </thead>
+
+        <tbody>
+
+                        {% for pony in ponys %}
+                    <td>{{ pony.user.first_name}} {{ pony.user.last_name }}</td>
+                    <td>|
+                        <a class="btn btn-success" href="/my_collection">My Collection</a>|
+                        <a class="btn btn-success" href="/wishlist">My Wishlist</a>|
+                        <a class="btn btn-success" href="/new/pony">Add A Pony</a>|
+                    </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

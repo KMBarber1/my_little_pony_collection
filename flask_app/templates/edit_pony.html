@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pony</title>
+</head>
+
+<body>
+
+    <h3>Welcome, {{ user.first_name }}!</h3>
+
+    <div>
+        <a class="btn btn-success" href="/dashboard">Dashboard</a>
+        <p></p>
+        <a class="btn btn-danger" href="/logout">Logout</a>
+    </div>
+
+    <h1>Edit Pony Information</h1>
+
+    <form action="/update/pony" method="post">
+        <input type="hidden" name="id" value={{edit.id}}>
+
+        <div>
+            <label for="name" class="form-label">Name:</label><br>
+            <input type="text" name="name" class="form-control" value="{{ edit.name }}">
+            <p></p>
+            <label for="location_made" class="form-label">Location Made:</label><br>
+            <input type="text" name="location_made" class="form-control" value="{{ edit.location_made }}">
+            <p></p>
+            <label for="comment" class="form-label">Comment(s):</label><br>
+            <input type="text" name="comment" class="form-control" value="{{ edit.comment }}">
+        </div>
+
+        <div>
+            <p>Choose Your List:</p>
+            <input type="radio" id="opyion1" name="pony_list" value="Collection">
+            <label class="fmt" for="pony_list">My Collection</label>
+            <input type="radio" id="option2" name="pony_list" value="Wishlist">
+            <label class="fmt" for="pony_list">My Wishlist</label>
+        </div>
+
+        <p><input type="submit" value="Submit" class="button"></p>
+
+        <!-- <br>
+        <input type="submit" value="Update Collection" class="btn btn-warning">
+        <input type="submit" value="Update Wishlist" class="btn btn-warning"> -->
+
+        {% with messages = get_flashed_messages(category_filter=['tree']) %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p> {{ message }} </p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </form>
+
+</body>
+</html>
